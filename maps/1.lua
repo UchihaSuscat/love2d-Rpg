@@ -9,8 +9,8 @@ return {
   height = 30,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 6,
-  nextobjectid = 49,
+  nextlayerid = 7,
+  nextobjectid = 50,
   properties = {},
   tilesets = {
     {
@@ -293,7 +293,7 @@ return {
     {
       type = "objectgroup",
       draworder = "topdown",
-      id = 5,
+      id = 6,
       name = "pathend",
       class = "",
       visible = true,
@@ -305,67 +305,15 @@ return {
       properties = {},
       objects = {
         {
-          id = 43,
+          id = 49,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 1279.33,
-          y = 0.333333,
+          x = 1280,
+          y = 0,
           width = 192,
-          height = 14,
+          height = 22,
           rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 47,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 64.0833,
-          y = 0.666667,
-          width = 192,
-          height = 14,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 44,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1920.12,
-          y = 639.818,
-          width = 192,
-          height = 14,
-          rotation = 89.8711,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 48,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1920,
-          y = 1600.33,
-          width = 192,
-          height = 14,
-          rotation = 89.8711,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 46,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 13.9507,
-          y = 895.772,
-          width = 192,
-          height = 14,
-          rotation = 89.8711,
           visible = true,
           properties = {}
         }

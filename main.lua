@@ -61,6 +61,12 @@ function collisionbump()
         end
     end
 
+    if gameMap.layers["pathend"] then 
+        for _, object in pairs(gameMap.layers["pathend"].objects) do
+            world:add(object, object.x, object.y, object.width, object.height)
+        end
+    end
+
     -- Add player to the world
     world:add(player, player.x, player.y, player.width, player.height)
 end
