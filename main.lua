@@ -8,7 +8,7 @@ function love.load()
     player:load()
     gameMap = STI("maps/1.lua")
     collisionbump()
-    
+    sounds()
 end
 
 function love.update(dt)
@@ -63,4 +63,10 @@ function collisionbump()
 
     -- Add player to the world
     world:add(player, player.x, player.y, player.width, player.height)
+end
+
+function sounds()
+    sounds = {}
+    sounds.music = love.audio.newSource("sounds/music.mp3", "stream")
+    sounds.music:play()
 end

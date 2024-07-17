@@ -6,8 +6,8 @@ player = {}
 
 function player:load()
     -- PLAYER DIMENSIONS
-    self.x = 100
-    self.y = 100
+    self.x = 153.5292
+    self.y = 36.304868
     self.width = 12
     self.height = 18
     self.speed = 1000
@@ -71,7 +71,7 @@ function player:anim()
     self.animations.left = anim8.newAnimation(self.grid("1-4", 2), 0.2)
     self.animations.right = anim8.newAnimation(self.grid("1-4", 3), 0.2)
     self.animations.up = anim8.newAnimation(self.grid("1-4", 4), 0.2)
-    self.anim = self.animations.left
+    self.anim = self.animations.down
 end
 
 function player:checkBoundary()
