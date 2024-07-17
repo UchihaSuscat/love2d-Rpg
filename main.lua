@@ -8,7 +8,7 @@ function love.load()
     player:load()
     gameMap = STI("maps/1.lua")
     collisionbump()
-    sounds()
+    --sounds()
 end
 
 function love.update(dt)

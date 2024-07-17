@@ -75,34 +75,34 @@
 </data>
  </layer>
  <objectgroup color="#ff0000" id="3" name="solid">
-  <object id="17" x="850.333" y="1053" width="28" height="31">
+  <object id="17" x="850.333" y="1046" width="28" height="38">
    <ellipse/>
   </object>
-  <object id="18" x="850.333" y="925" width="28" height="31">
+  <object id="18" x="850.333" y="917.5" width="28" height="38.5">
    <ellipse/>
   </object>
-  <object id="19" x="849.667" y="798.333" width="28" height="31">
+  <object id="19" x="849.667" y="789.833" width="28" height="39.5">
    <ellipse/>
   </object>
-  <object id="20" x="849.333" y="668.667" width="28" height="31">
+  <object id="20" x="849.333" y="661.417" width="28" height="38.25">
    <ellipse/>
   </object>
-  <object id="21" x="850" y="541.667" width="28" height="31">
+  <object id="21" x="850" y="533.917" width="28" height="38.75">
    <ellipse/>
   </object>
-  <object id="22" x="850" y="413.333" width="28" height="31">
+  <object id="22" x="850" y="406.151" width="28" height="38.1818">
    <ellipse/>
   </object>
-  <object id="23" x="850" y="1182.33" width="28" height="31">
+  <object id="23" x="850" y="1172.83" width="28" height="40.5">
    <ellipse/>
   </object>
-  <object id="24" x="850.5" y="1309" width="28" height="31">
+  <object id="24" x="850.5" y="1300.75" width="28" height="39.25">
    <ellipse/>
   </object>
-  <object id="25" x="850" y="1438.33" width="28" height="31">
+  <object id="25" x="850" y="1428.58" width="28" height="40.75">
    <ellipse/>
   </object>
-  <object id="26" x="850" y="1571.33" width="28" height="31">
+  <object id="26" x="850" y="1556.33" width="28" height="46">
    <ellipse/>
   </object>
  </objectgroup>
