@@ -1,18 +1,28 @@
-local STI = require("libs/sti")
-local camera = require("libs/camera")
-local bump = require("libs/bump")
+local STI = require("libs.sti")
+local camera = require("libs.camera")
+local bump = require("libs.bump")
 cam = camera()
-require("src/Player/player")
+require("src.Player.player")
+local enemy = require("src.Enemy.enemy")
+flux = require("libs.flux")
+
+--ball = { x = love.graphics.getWidth() / 2 , y = love.graphics.getHeight() / 2 , radius = 0 }
+ball = { x = love.graphics.getWidth() / 2 , y = love.graphics.getHeight() / 2 , radius = love.graphics.getWidth() }
 
 function love.load()
     player:load()
+    enemy:load()
     gameMap = STI("maps/1.lua")
     collisionbump()
-    --sounds()
+    flux.to(ball, 2, { radius = 0 }):ease("expoinout")
+    flux.to(ball, 2, { radius = love.graphics.getWidth() }):ease("expoinout")
+    sounds()
 end
 
 function love.update(dt)
     player:update(dt)
+    flux.update(dt)
+    enemy:update(dt)
     cam:lookAt(player.x + player.width / 2, player.y + player.height / 2)
     cameraborder()
 end
@@ -20,9 +30,22 @@ end
 function love.draw()
     cam:attach()
         gameMap:drawLayer(gameMap.layers["ground"])
+        enemy:draw()
         player:draw()
         gameMap:drawLayer(gameMap.layers["Trees"])
     cam:detach()
+
+    love.graphics.setColor(1,1,1)
+    love.graphics.print("Health: " .. player.health, 10, 10)
+
+    local y = 10
+    for i, e in ipairs(enemy.list) do
+        local text = "Enemy " .. i .. ": " .. e.hp
+        local w = love.graphics.getFont():getWidth(text)
+        love.graphics.print(text, love.graphics.getWidth() - w - 10, y)
+        y = y + 20
+        end
+    love.graphics.circle("fill", ball.x, ball.y, ball.radius)
 end
 
 function cameraborder()
@@ -73,6 +96,8 @@ end
 
 function sounds()
     sounds = {}
-    sounds.music = love.audio.newSource("sounds/music.mp3", "stream")
+    sounds.music = love.audio.newSource("sounds/8CHRW33-chill-beat.mp3", "stream")
+    sounds.music:setVolume(0.1) -- 0.1 to 1.0
+    sounds.music:setLooping(true) -- Loop the music
     sounds.music:play()
 end

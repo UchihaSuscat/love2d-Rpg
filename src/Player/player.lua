@@ -1,7 +1,7 @@
 local anim8 = require("libs/anim8")
 local bump = require("libs/bump")
 love.graphics.setDefaultFilter("nearest", "nearest")
-
+isAttacking = false
 player = {}
 
 function player:load()
@@ -10,8 +10,13 @@ function player:load()
     self.y = 36.304868
     self.width = 12
     self.height = 18
-    self.speed = 1000
+    self.speed = 200
     self:anim()
+
+    -- PLAYER COMBAT
+    self.health = 100
+    self.damage = 10
+
 end
 
 function player:update(dt)
@@ -28,6 +33,12 @@ function player:draw()
     self.anim:draw(self.spriteSheet, self.x, self.y, nil, 4, nil, 6, 9)
 end
 
+function love.keypressed(key)
+    if key == "space" then
+        player:attack()
+    end
+end
+
 -- PLAYER FUNCTIONS
 
 function player:move(dt)
@@ -35,25 +46,25 @@ function player:move(dt)
     local isMoving = false
 
     -- THE MOVEMENT SCRIPT + THE ANIMATIONS
-
-    if love.keyboard.isDown("d", "right") then
-        self.x = self.x + self.speed * dt
-        self.anim = self.animations.right
-        isMoving = true
-    elseif love.keyboard.isDown("a", "left") then
-        self.x = self.x - self.speed * dt
-        self.anim = self.animations.left
-        isMoving = true
-    elseif love.keyboard.isDown("w", "up") then
-        self.y = self.y - self.speed * dt
-        self.anim = self.animations.up
-        isMoving = true
-    elseif love.keyboard.isDown("s", "down") then
-        self.y = self.y + self.speed * dt
-        self.anim = self.animations.down
-        isMoving = true
+    if isAttacking == false then
+        if love.keyboard.isDown("d", "right") then
+            self.x = self.x + self.speed * dt
+            self.anim = self.animations.right
+            isMoving = true
+        elseif love.keyboard.isDown("a", "left") then
+            self.x = self.x - self.speed * dt
+            self.anim = self.animations.left
+            isMoving = true
+        elseif love.keyboard.isDown("w", "up") then
+            self.y = self.y - self.speed * dt
+            self.anim = self.animations.up
+            isMoving = true
+        elseif love.keyboard.isDown("s", "down") then
+            self.y = self.y + self.speed * dt
+            self.anim = self.animations.down
+            isMoving = true
+        end
     end
-
     -- MAKING THE ANIMATION GOT TO THE IDLE POSITION OF THE PLAYER IS NOT MOVING
     if not isMoving then
         self.anim:gotoFrame(2)
@@ -97,4 +108,11 @@ function player:checkCollision(dt)
     end)
 
     self.x, self.y = actualX, actualY
+end
+
+function player:attack()
+    local w, h = 20, 20
+    local x = self.x + self.width
+    local y = self.y + self.height / 2 - h / 2
+    enemy:damage(x, y, w, h)
 end
